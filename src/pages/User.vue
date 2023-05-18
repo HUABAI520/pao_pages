@@ -1,10 +1,10 @@
 <template>
-主页
+个人
 </template>
 
 <script>
 export default {
-  name: "Index"
+  name: "User"
 }
 </script>
 
