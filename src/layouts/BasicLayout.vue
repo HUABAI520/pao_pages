@@ -1,6 +1,6 @@
 <template>
   <van-nav-bar
-      title="标题"
+      :title="pageTitle"
       left-arrow
       @click-left="onClickLeft"
       @click-right="onClickRight"
@@ -27,14 +27,29 @@
 
 import {showToast} from 'vant';
 import {useRouter} from "vue-router";
+import {ref} from "vue";
 const router = useRouter();
 const onClickLeft = () => history.back();
 const onClickRight = () => {
   router.push('/search')
 };
 // const active = ref("index");
-const onChange = (index) => showToast(`标签 ${index}`);
-
+const pageTitle = ref('标题');
+const onChange = (name) => {
+  switch (name) {
+    case 'index':
+      pageTitle.value = '主页';
+      break;
+    case 'team':
+      pageTitle.value = '队伍页';
+      break;
+    case 'usr':
+      pageTitle.value = '个人信息';
+      break;
+    default:
+      pageTitle.value = '标题';
+  }
+};
 </script>
 
 <style scoped>
